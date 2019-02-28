@@ -25,5 +25,10 @@ public class QuotesController {
 		return quote;
 		
 	}
+	
+	@GetMapping("/sayHello")
+	public String sayHello() {
+		return "HelloWorld";
+	}
 
 }
