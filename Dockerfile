@@ -1,8 +1,8 @@
 FROM maven:3.6.0-jdk-8-alpine as build
 WORKDIR /workspace/app
 
-COPY mvnw .
-COPY .mvn .mvn
+#COPY mvnw .
+#COPY .mvn .mvn
 COPY pom.xml .
 COPY src src
 
