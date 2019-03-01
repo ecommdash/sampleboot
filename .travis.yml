@@ -1,9 +1,12 @@
 language: java
 sudo: required
+jdk: openjdk8
+
 services:
   - docker
 
-script:
+after_success:
+  - mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
   - docker build -t hyde009/hml .
 
 deploy:
