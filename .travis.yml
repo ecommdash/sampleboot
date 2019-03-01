@@ -7,11 +7,6 @@ services:
 
 after_success:
   - mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
-  - ls -ltr
-  - pwd
-  - cd ..
-  - pwd
-  - ls -ltr
   - docker build -t hyde009/hml .
 
 deploy:
