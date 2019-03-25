@@ -3,8 +3,8 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: draft
-  tag: dev
+  repository: https://cloud.docker.com/u/hyde009/repository/docker/hyde009/ron2/hyde007/ron2
+  tag: 0.0.6
   pullPolicy: IfNotPresent
 service:
   name: ron2
