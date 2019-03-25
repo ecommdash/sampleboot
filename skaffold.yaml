@@ -7,7 +7,7 @@ build:
     docker: {}
   tagPolicy:
     envTemplate:
-      template: '{{.DOCKER_REGISTRY}}/hyde007/ron2:{{.VERSION}}'
+      template: '{{.DOCKER_REGISTRY}}/hyde009/ron2:{{.VERSION}}'
   local: {}
 deploy:
   kubectl: {}
@@ -18,7 +18,7 @@ profiles:
     - docker: {}
     tagPolicy:
       envTemplate:
-        template: '{{.DOCKER_REGISTRY}}/hyde007/ron2:{{.DIGEST_HEX}}'
+        template: '{{.DOCKER_REGISTRY}}/hyde009/ron2:{{.DIGEST_HEX}}'
     local: {}
   deploy:
     helm:
@@ -26,5 +26,5 @@ profiles:
       - name: ron2
         chartPath: charts/ron2
         setValueTemplates:
-          image.repository: '{{.DOCKER_REGISTRY}}/hyde007/ron2'
+          image.repository: '{{.DOCKER_REGISTRY}}/hyde009/ron2'
           image.tag: '{{.DIGEST_HEX}}'
