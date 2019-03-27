@@ -37,20 +37,27 @@ pipeline {
       }
       steps {
         container('maven') {
+         withCredentials([file(credentialsId: 'gcr-login', variable: 'GC_KEY')]) {
+          sh "gcloud auth list"
+          sh "gcloud auth print-access-token"
 
-          // ensure we're not on a detached head
+          sh "gcloud auth activate-service-account --key-file=${GC_KEY}"
+          
           sh "git checkout master"
           sh "git config --global credential.helper store"
           sh "jx step git credentials"
-
+          
           // so we can retrieve the version in later steps
           sh "echo \$(jx-release-version) > VERSION"
           sh "mvn versions:set -DnewVersion=\$(cat VERSION)"
           sh "jx step tag --version \$(cat VERSION)"
           sh "mvn clean deploy"
           sh "skaffold version"
+          sh "gcloud auth list"
+          sh "gcloud auth print-access-token"
           sh "export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml"
           sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION)"
+        }
         }
       }
     }
