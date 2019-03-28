@@ -9,11 +9,12 @@ image:
 service:
   name: ron2
   type: ClusterIP
-  externalPort: 80
-  internalPort: 8080
+  externalPort: 9000
+  internalPort: 9000
   annotations:
     fabric8.io/expose: "true"
     fabric8.io/ingress.annotations: "kubernetes.io/ingress.class: nginx"
+    fabric8.io/ingress.annotations: "nginx.ingress.kubernetes.io/rewrite-target: /$1"
 resources:
   limits:
     cpu: 500m
@@ -21,7 +22,7 @@ resources:
   requests:
     cpu: 400m
     memory: 512Mi
-probePath: /actuator/health
+probePath: /quotes/
 livenessProbe:
   initialDelaySeconds: 60
   periodSeconds: 10
