@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: {{ .Chart.Name }}
-        image: gcr.io/jxtest-235610/ron2:"{{ .Values.image.tag }}"
+        image: gcr.io/jxtest-235610/ron2:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
