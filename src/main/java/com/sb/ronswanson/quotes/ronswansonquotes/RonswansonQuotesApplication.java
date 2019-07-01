@@ -8,7 +8,7 @@ public class RonswansonQuotesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RonswansonQuotesApplication.class, args);
-	}
+	} 
 
 }
 
